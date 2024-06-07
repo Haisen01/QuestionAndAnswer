@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Franz Acebedo">
+   
+    <title>Mini quiz</title>
+    
+    <style>
+        button{
+            border: 0px;
+            border-radius: 15px;
+            background-color: cyan;
+            font-size: 30px;
+        }
+        
+        body{
+            text-shadow: 2px 2px 2px red,0px -2px 0px skyblue;
+            background: linear-gradient(45deg,skyblue,whitesmoke,powderblue,skyblue);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        h1{
+            color: salmon;
+        }
+        h2{
+            color: white;
+        }
+        
+        p{
+            font-size: 30px;
+        }
+        
+        img{
+            border-radius:50%;
+            border: solid 7px skyblue;
+        }
+    </style>
+    
+    
+    
+    
+    
+</head>
+<body>
+    <center>
+    <h1> WELCOME TO MY MINI QUIZ</h1>
+    </center>
+    <br>
+    <h2 id="myH2"><b></b></h2>
+    <center>
+        
+    <img src="https://media1.tenor.com/m/FvthnLepGgAAAAAC/hi-hello.gif" alt="anime" width="180" height="180"></center><br><br>
+    
+    <center>
+    <button id="myBtn"> Question</button><br><br>
+    <a>
+    <p id="p1"></p></a><br><br>
+    
+    
+    
+     <button id="myBtn1"> Question</button><br><br>
+     
+     <a>
+     <p id="p2"></p></a><br><br>
+      <button id="myBtn2"> Question</button><br><br>
+     <a> <p id="p3"></p></a><br><br>
+      
+       <button id="myBtn3"> Question</button><br><br>
+      <a> <p id="p4"></p></a><br><br>
+        <button id="myBtn4"> Question</button><br><br>
+        
+       <a> <p id="p5"><p></a>
+        
+    </center>
+   
+   
+<script>
+    
+  
+    var p10 = document.getElementById("myH2");
+    let con = false
+   while(!con){
+   
+     con = window.prompt("Enter your name");
+    
+    
+    
+    if (con === "" || con === null) {
+        alert("try again")
+        
+    } 
+    else{
+    
+        p10.innerText = "Hello "+ con + "👋👋";
+    }
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //button link
+    
+    
+    
+  let btn0 = document.getElementById("myBtn");
+    
+  let btn1 = document.getElementById("myBtn1");
+  
+  let btn2 = document.getElementById("myBtn2");
+  
+  let btn3 = document.getElementById("myBtn3");
+  
+  let btn4 = document.getElementById("myBtn4");
+  
+  //paragraph link
+  
+  let p1 = document.getElementById("p1")
+;  
+  
+  let p2 = document.getElementById("p2")
+;  
+  let p3 = document.getElementById("p3")
+;  
+  
+  let p4 = document.getElementById("p4")
+;  
+  
+  let p5 = document.getElementById("p5")
+;  
+  
+  
+  
+  //functional and condition
+  
+  //button 1
+  
+  
+  
+  
+    btn0.onclick = function(){
+        let user = false
+        
+        
+        alert("Goodluck👍")
+        
+        
+        
+        while(!user){
+            user = window.prompt("what is acronym of html?")
+            
+            if(user == "" || user == null){
+            
+            alert("please dont leave it blank")
+            
+                   
+            }else if( user === "HyperText Markup Language"){
+               if(window.confirm(`are you sure about your answer?`)){
+                alert("thats correct") 
+               p1.innerText = 'thats correct'
+            }else{
+                alert("Think more")
+               
+            }
+            }
+            else{
+                alert("thats wrong")
+                p1.innerText = "thats wrong"
+            }
+        }
+       
+           
+           
+    }
+    
+    
+// button 2
+
+
+
+
+ btn1.onclick = function(){
+        let user = false
+        
+        while(!user){
+            user = window.prompt("what is acronym of Css")
+            
+            if(user == "" || user == null){
+            
+            alert("please dont leave it blank")
+            
+                   
+            }else if( user === "Cascading Style Sheet"){
+            if(window.confirm(`are you sure about your answer?`)){
+                alert("thats correct") 
+               p2.innerText = 'thats correct'
+            }else{
+                alert("Think more")
+            }
+               
+               
+            }else{
+                alert("thats wrong")
+                p2.innerText = "thats wrong"
+            }
+        }
+       
+           
+           
+    }
+
+
+
+// button 3
+
+
+ btn2.onclick = function(){
+        let user = false
+        
+        while(!user){
+            user = window.prompt("What Programming language that gave functionality of the webpage")
+            
+            if(user == "" || user == null){
+            
+            alert("please dont leave it blank")
+            
+                   
+            }else if( user === "Javascript"){
+               if(window.confirm(`are you sure about your answer?`)){
+                alert("thats correct") 
+               p3.innerText = 'thats correct'
+            }else{
+                alert("Think more")
+               }
+            }else{
+                alert("thats wrong")
+                p3.innerText = "thats wrong"
+            }
+        }
+       
+           
+           
+    }
+    
+    
+    
+    
+    //button 4
+    
+    
+    
+     btn3.onclick = function(){
+        let user = false
+        
+        while(!user){
+            user = window.prompt("What Proragmming Language can do automation and machine learning?")
+            
+            if(user == "" || user == null){
+            
+            alert("please dont leave it blank")
+            
+                   
+            }else if( user === "Python"){
+               if(window.confirm(`are you sure about your answer?`)){
+                alert("thats correct") 
+               p4.innerText = 'thats correct'
+            }else{
+                alert("Think more")
+               }
+            }else{
+                alert("thats wrong")
+                p4.innerText = "thats wrong"
+            }
+        }
+       
+           
+           
+    }
+
+
+
+// button 5
+
+
+
+ btn4.onclick = function(){
+        let user = false
+        
+        while(!user){
+            user = window.prompt("What Progeamming language gave server of the web?")
+            
+            if(user == "" || user == null){
+            
+            alert("please dont leave it blank")
+            
+                   
+            }else if( user === "Php"){
+               
+               if(window.confirm(`are you sure about your  answer?`)){
+                alert("thats correct") 
+               p5.innerText = 'thats correct'
+            }else{
+                alert("Think more")
+                }
+            }else{
+                alert("thats wrong")
+                p5.innerText = "thats wrong"
+            }
+        }
+       
+           
+           
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
+
+
+</script>   
+   
+   
+</body>
+</html>

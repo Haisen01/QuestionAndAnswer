@@ -7,23 +7,15 @@
   <title>Quiz App</title>
   <style>
     /* Existing CSS */
-
     #timer {
       font-size: 1.2rem;
       color: var(--question-color);
       margin-bottom: 20px;
     }
-    #timer {
-      font-size: 1.2rem;
-      color: var(--question-color);
-      margin-bottom: 20px;
-    }
-    
-     *, *::before, *::after {
+    *, *::before, *::after {
       box-sizing: border-box;
       font-family: 'Arial', sans-serif;
     }
-
     :root {
       --hue-neutral: 200;
       --hue-wrong: 0;
@@ -41,7 +33,6 @@
       --transition-duration: 0.3s;
       --result-text: black; /* Updated color for better readability */
     }
-
     body {
       background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
       color: white;
@@ -53,17 +44,14 @@
       justify-content: center;
       align-items: center;
     }
-
     body.correct {
       --hue: var(--hue-correct);
       transition: background-color var(--transition-duration);
     }
-
     body.wrong {
       --hue: var(--hue-wrong);
       transition: background-color var(--transition-duration);
     }
-
     .container {
       width: 800px;
       max-width: 90%;
@@ -74,31 +62,31 @@
       text-align: center;
       transition: opacity var(--transition-duration);
     }
-
     #question-container {
       margin-bottom: 20px;
     }
-
+    #question-info {
+      font-size: 1.2rem;
+      color: var(--question-color);
+      margin-bottom: 10px;
+    }
     #question {
       font-size: 1.5rem;
       color: var(--question-color);
       margin-bottom: 20px;
       transition: color var(--transition-duration);
     }
-
     #result {
       font-size: 1.2rem;
       margin-bottom: 20px;
       color: var(--result-text); /* Ensure the result text color is visible */
     }
-
     .btn-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
       margin-bottom: 20px;
     }
-
     .btn {
       border: 2px solid var(--btn-border);
       background-color: var(--btn-bg);
@@ -111,26 +99,21 @@
       outline: none;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
     .btn:hover {
       border-color: var(--btn-hover);
       background-color: var(--btn-hover);
     }
-
     .btn:active {
       transform: scale(0.95);
     }
-
     .btn.correct {
       background-color: var(--btn-correct-bg);
       color: var(--btn-correct-text);
     }
-
     .btn.wrong {
       background-color: var(--btn-wrong-bg);
       color: var(--btn-text);
     }
-
     .start-btn, .next-btn {
       font-size: 1.5rem;
       font-weight: bold;
@@ -142,31 +125,27 @@
       cursor: pointer;
       transition: background-color var(--transition-duration), transform var(--transition-duration);
     }
-
     .start-btn:hover, .next-btn:hover {
       background-color: var(--btn-hover);
     }
-
     .start-btn:active, .next-btn:active {
       transform: scale(0.95);
     }
-
     .controls {
       display: flex;
       justify-content: center;
       align-items: center;
     }
-
     .hide {
       display: none;
     }
-    /* Existing CSS */
   </style>
 </head>
 <body>
   <div class="container">
     <div id="question-container" class="hide">
       <div id="timer">20</div>
+      <div id="question-info" class="hide">Score: <span id="current-score">0</span> / <span id="total-questions">0</span></div>
       <div id="question">Question</div>
       <div id="answer-buttons" class="btn-grid">
         <button class="btn">Answer 1</button>
@@ -177,13 +156,14 @@
     </div>
     <div id="result-container" class="hide">
       <div id="result">You scored <span id="score"></span> out of <span id="total-questions"></span></div>
-      <button id="restart-btn" class="start-btn btn">Restart</button>
     </div>
     <div class="controls">
       <button id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>
+  
+  
   <script>
     const startButton = document.getElementById('start-btn');
     const nextButton = document.getElementById('next-btn');
@@ -194,8 +174,9 @@
     const totalQuestionsElement = document.getElementById('total-questions');
     const questionElement = document.getElementById('question');
     const answerButtonsElement = document.getElementById('answer-buttons');
-    const restartButton = document.getElementById('restart-btn');
     const timerElement = document.getElementById('timer');
+    const questionInfoElement = document.getElementById('question-info');
+    const currentScoreElement = document.getElementById('current-score');
 
     let shuffledQuestions, currentQuestionIndex, score, timerInterval;
 
@@ -203,13 +184,6 @@
     nextButton.addEventListener('click', () => {
       currentQuestionIndex++;
       setNextQuestion();
-    });
-    restartButton.addEventListener('click', () => {
-      startButton.classList.remove('hide');
-      resultContainerElement.classList.add('hide');
-      questionContainerElement.classList.add('hide');
-      document.body.classList.remove('correct', 'wrong');
-      clearTimer();
     });
 
     function startGame() {
@@ -234,7 +208,18 @@
     }
 
     function showQuestion(question) {
+      // Update the question-info with score and total questions
+      currentScoreElement.innerText = score;
+      totalQuestionsElement.innerText = shuffledQuestions.length;
+      questionInfoElement.classList.remove('hide');
+
+      // Update the question text
       questionElement.innerText = question.question;
+
+      // Clear previous answers
+      answerButtonsElement.innerHTML = '';
+
+      // Display the answer buttons
       question.answers.forEach(answer => {
         const button = document.createElement('button');
         button.innerText = answer.text;
@@ -253,6 +238,7 @@
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
       }
       clearTimer();
+      questionInfoElement.classList.add('hide');
     }
 
     function startTimer() {
@@ -307,11 +293,11 @@
       totalQuestionsElement.innerText = shuffledQuestions.length;
       nextButton.classList.add('hide'); // Ensure Next button is hidden on results
 
-      // Display the prompt based on the score
+      // Display the result message based on the score
       if (score > 3) {
-        window.alert("You passed!");
+        resultElement.innerHTML = `You passed!<br>Your score: ${score} out of ${shuffledQuestions.length}`;
       } else {
-        window.alert("You failed!");
+        resultElement.innerHTML = `You failed.<br>Your score: ${score} out of ${shuffledQuestions.length}`;
       }
     }
 

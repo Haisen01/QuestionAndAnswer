@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Franz Acebedo">
+    <meta name="keyword" content="Basic,HTML,Question and Answer">
+    
+    <title>Pop quiz</title>
+    
+    <style>
+        body{
+            font-size:25px;
+            background:linear-gradient(45deg,whitesmoke,cyan,whitesmoke,skyblue);
+        }
+        
+        h3{
+            font-size:45px;
+        }
+        
+        h1{
+            font-size:50px;
+        }
+        
+        button{
+            border:0px;
+            border-radius:25px;
+            font-size:30px;
+            background-color:hotpink;
+            color:white;
+            cursor:pointer;
+        }
+        
+        
+            </style>
+    
+    <script>
+        
+        let username  = "";
+        username  = window.prompt("please enter your name: ");
+        
+        
+        if(username == "" || username == null){
+          alert("Please input your name")
+              
+             
+         
+        }
+         else{
+             alert("hello " + username)
+         }
+         
+        
+      function doSomething(){
+            let question01;
+            let answer1;
+             alert("What is acronym of HTML? ");
+             question01 = window.prompt("Enter your Answer")
+            
+            
+            
+          
+            if( question01 == ""|| question01 == null){
+                alert("please  answer this question");
+                document.getElementById("01").innerText = "please answer the question properly";
+                
+            }
+
+          else if(question01 == "HyperText Markup Language"){
+              alert(`thats correct`);
+             document.getElementById("01").innerText = "Correct"; 
+                   
+              
+                   
+              
+             
+              
+              
+          }
+          else{
+              alert("wrong answer");
+              document.getElementById("01").innerText = "wrong ";
+              }
+        }
+        
+      
+        
+        
+     function doBtn(){
+            
+            let question02;
+            alert("What Css stand for?");
+            question02 = window.prompt("Enter your answer.");
+            
+            
+            if (question02 == "" || question02 == null) {
+                alert("please answer the question properly");
+                
+                document.getElementById("02").innerText = "please answer this question";
+            }
+            else if (question02 =="Cascading Style Sheets"){
+            alert("thats correct");
+            document.getElementById("02").innerText = "Correct";
+            
+                
+            } else {
+                alert(" thats wrong");
+                document.getElementById("02").innerText = "Wrong";
+            }
+            
+        }
+        
+        
+        
+        
+        
+        function doClick(){
+            
+            let question03;
+            
+           alert("How old the creator of this mini quiz?");
+           question03 = window.prompt("Enter your answer.");
+           
+           
+           if (question03 == "" || question03 == null) {
+           alert("please answer this last question for you");
+           document.getElementById("03").innerText = "please answer this question";
+               
+           }else if (question03 != Number(question03) || question03 != String(question03)){
+              alert("please answer a number not a character letter!");
+              document.getElementById("03").innerText = "why naman character letter☹️";
+              
+                  
+           } else if(  question03 == 16){
+               alert("thats correct.");
+               document.getElementById("03").innerText = "Correct";
+           }
+            
+            else{
+                alert("thats wrong");
+                document.getElementById("03").innerText = "Wrong";
+            }
+            
+            
+                
+            
+        }
+        
+        
+        
+        
+        
+        
+    </script>
+</head>
+<body>
+    <p id="text"></p>
+    
+    <br>
+    
+    
+    <center>
+    <h1> Quiz  </h1>
+    </center>
+    <br>
+    
+    
+    <br>
+    <h3>Question No.1 </h3>
+    <br>
+    <button  onclick="doSomething()" class="btn01">Click Here!</button>
+    <br>
+    <h4 id="result01">Result</h4>
+    <br>
+    <p id="01"></p>
+     
+    
+    
+    <br>
+     <h3>Question No.02</h3>
+    <br>
+    <button  onclick="doBtn()" class="btn01">Click Here!</button>
+    <br>
+    <h4 id="result02">Result</h4>
+    <br>
+    <p id="02"></p>
+     
+    <br>
+     <h3>Question No.3 </h3>
+    <br>
+    <button  onclick="doClick()" class="btn01">Click Here!</button>
+    <br>
+    <h4 id="result03">Result</h4>
+    <br>
+    
+     <p id="03"></p>
+      
+</body>
+</html>
